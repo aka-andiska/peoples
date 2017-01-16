@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'peoples.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'products',
+        'NAME': 'people',
         'USER': 'aka',
         'PASSWORD': 'afenandiska',
         'HOST': 'localhost',
