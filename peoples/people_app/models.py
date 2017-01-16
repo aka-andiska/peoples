@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-class Product(models.Model):
+class People(models.Model):
     name = models.CharField(max_length=255)
     biography = models.TextField()
     created_at = models.DateTimeField(
@@ -9,7 +9,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(
             blank=True, null=True)
 
-    def publish(self):
+    def update(self):
         self.updated_at = timezone.now()
         self.save()
 

@@ -1,0 +1,36 @@
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="/create" method="post">
+        {% csrf_token %}
+        <label for="name">Name: <input type="text" name="name" id="name" /></label>
+        <label for="biography">Biography: <input type="text" name="biography" id="biography" /></label>
+        <input type="submit" value="Create" />
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>People Name</th>
+                <th>Biography</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {% for people in peoples %}
+                <tr>
+                    <td>{{ people.name }}</td>
+                    <td>{{ people.biography }}</td>
+                    <td>{{ people.created_at }}</td>
+                    <td>{{ people.updated_at }}</td>
+                    <td><a href="/edit/{{ people.id }}">Edit</a>
+                    <a href="/delete/{{ people.id }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
