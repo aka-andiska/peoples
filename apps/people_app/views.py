@@ -27,3 +27,7 @@ def update(request, id):
     people.save()
     return redirect('/')
 
+def destroy(request, id):
+    people = People.objects.get(id=id)
+    people.delete()
+    return redirect('/')
