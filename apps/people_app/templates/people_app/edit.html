@@ -1,0 +1,20 @@
+<html>
+<head>
+        <title>Peoples</title>
+</head>
+<body>
+    <div>
+        <h1><a href="">Edit Data</a></h1>
+    </div>
+    <form action="/update/{{ people.id }}" method="post">
+        {% csrf_token %}
+        <label for="name">Name: <input type="text" name="name" id="name"
+        value="{{ people.name }}" placeholder="{{ people.name }}" />
+        </label>
+        <label for="biography">Biography: <input type="text" name="biography"
+        value="{{ people.biography }}" placeholder="{{ people.byography }}" />
+        </label>
+        <input type="submit" Value="Update" />
+    </form>
+</body>
+</html>
