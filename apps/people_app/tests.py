@@ -3,8 +3,7 @@ from django.shortcuts import render, redirect
 from django.db import models
 from .models import People
 
-
-class People(TestCase):
+class PeopleT(TestCase):
     name = models.CharField(max_length=255)
     biography = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,4 +20,4 @@ class People(TestCase):
         people_app.save()
         return redirect('/')
 
-    
+
