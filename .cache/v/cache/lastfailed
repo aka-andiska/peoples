@@ -1,0 +1,5 @@
+{
+  "lib/python3.5/site-packages/django/contrib/admindocs/tests/test_fields.py::TestFieldType::test_builtin_fields": true,
+  "lib/python3.5/site-packages/django/contrib/admindocs/tests/test_fields.py::TestFieldType::test_custom_fields": true,
+  "lib/python3.5/site-packages/django/contrib/admindocs/tests/test_fields.py::TestFieldType::test_field_name": true
+}
