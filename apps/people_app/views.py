@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import People
+from django.utils import timezone
 
 
 def index(request):
@@ -7,13 +8,11 @@ def index(request):
     context = {'peoples': peoples}
     return render(request, 'people_app/index.html', context)
 
-
 def create(request):
     print(request.POST)
     people_app = People(name=request.POST['name'], biography=request.POST['biography'])
     people_app.save()
     return redirect('/')
-
 
 def edit(request, id):
     people = People.objects.get(id=id)
