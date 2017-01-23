@@ -10,5 +10,9 @@ class PeopleMethodTest(TestCase):
     def test_people_and_biography(self):
         lion = People.objects.get(name="lion")
         cat = People.objects.get(name="cat")
-        self.assertIs(lion.biography())
-        self.assertIs(cat.biography())
+        assert(lion.biography(),"roar")
+        assert(cat.biography(), "meow")
+
+    def test_edit_view(self):
+        response = PeopleMethodTest.get('/edit/')
+        assert response.status_code == 200
