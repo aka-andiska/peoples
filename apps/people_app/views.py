@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import People
-from django.utils import timezone
 
 
 def index(request):
