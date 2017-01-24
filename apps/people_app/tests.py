@@ -22,15 +22,34 @@ class PeopleMethodTest(TestCase):
 
     def test_create(self):
         """
-        crete should can creating new data and display in index
+        crete should can creating new data and post in index
         """
-        lion = People.objects.create(name="lion", biography="roar") #this how to arrange
+        lion = People.objects.create(name="lion", biography="roar")
         cat = People.objects.create(name="cat", biography="meow")
         response = self.client.post(reverse('index'))
-        self.assertEqual(len(response.context['peoples']), 2)
+
+        self.assertEqual(response.status_code, 200)
 
 
+    def test_edit(self):
+        """
+        edit can editing data by id
+        """
+        lion = People.objects.create(name="lion", biography="roar")  # this how to arrange
+        cat = People.objects.create(name="cat", biography="meow")
 
+        response = self.client.get(reverse('index'))  # this is how to act
+
+        self.assertEqual(response.status_code, 200)  # this is how to assert
+        self.assertEqual(response.context['peoples'][0], lion)
+
+    def test_delete(self):
+        """
+        delete can deleting data by id
+        """
+        to_delete = People.objects.filter(id=2).delete()
+        peoples = People.objects.all()
+        self.assertNotIn(to_delete, peoples)
 
 
 
