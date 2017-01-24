@@ -22,8 +22,18 @@ class PeopleMethodTest(TestCase):
 
     def test_create(self):
         """
-        create should creating new peoples and display in index
+        crete should can creating new data and display in index
         """
+        lion = People.objects.create(name="lion", biography="roar") #this how to arrange
+        cat = People.objects.create(name="cat", biography="meow")
+        response = self.client.post(reverse('index'))
+        self.assertEqual(len(response.context['peoples']), 2)
+
+
+
+
+
+
 
 
 
