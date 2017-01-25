@@ -31,17 +31,28 @@ class PeopleMethodTest(TestCase):
         self.assertEqual(len(response.context['peoples']),2)
 
     def test_edit(self):
-        to_edit = People.objects.filter(id=1)
+        """
+        edit can be editing data and get by id
+        """
         peoples = People.objects.all()
+        to_edit = People.objects.filter(id=1)
 
         response = self.client.post(reverse('index'))
         self.assertEqual(response.status_code, 200)
         self.assertNotIn(to_edit, peoples)
 
 
-
     def test_update(self):
-        pass
+        """
+        update can be post data to index after editing by id
+        """
+        people = People.objects.all()
+        to_update = People.objects.filter(id=1)
+
+        response = self.client.post(reverse('index'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn(to_update, people)
 
 
 
@@ -49,7 +60,7 @@ class PeopleMethodTest(TestCase):
         """
         delete can deleting data by id
         """
-        to_delete = People.objects.filter(id=2).delete()
+        to_delete = People.objects.filter(id=2)
         peoples = People.objects.all()
         self.assertNotIn(to_delete, peoples)
 
