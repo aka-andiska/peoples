@@ -31,30 +31,17 @@ class PeopleMethodTest(TestCase):
         self.assertEqual(len(response.context['peoples']),2)
 
     def test_edit(self):
-        """
-        edit can editing data by id
-        """
-        lion = People.objects.create(name="lion", biography="roar")  # this how to arrange
-        cat = People.objects.create(name="cat", biography="meow")
+        to_edit = People.objects.filter(id=1)
+        peoples = People.objects.all()
 
-        #to_edit = People.objects.filter(id=1).edit
-        #peoples = People.objects.all()
-        #self.assertNotIn(to_edit, peoples)
-        response = self.client.get(reverse('index'))  # this is how to act
-
-        self.assertEqual(response.status_code, 200)  # this is how to assert
-        self.assertEqual(response.context['peoples'][0], lion)
+        response = self.client.post(reverse('index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn(to_edit, peoples)
 
 
-    #def test_update(self):
-        
-        #name = People.objects.all()
-        #biography = People.objects.all()
 
-        #response = self.client.get(id=3).update
-        #peoples = People.objects.all()
-
-        #self.assertNotIn(response, peoples)
+    def test_update(self):
+        pass
 
 
 
