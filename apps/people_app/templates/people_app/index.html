@@ -10,6 +10,8 @@
         {% csrf_token %}
         <p><label for="name">Name: <input type="text" name="name" id="name" /></label></p>
         <p><label for="biography">Biography: <input type="text" name="biography" id="biography" /></label></p>
+        <p><label for="group_1">Group_1: <input type="checkbox" name="group_1" id="group_1" /></label></p>
+        <p><label for="group_2">Group_2: <input type="checkbox" name="group_2" id="group_2" /></label></p>
         <input type="submit" value="Create" />
     </form>
     <table border="1">
@@ -19,6 +21,7 @@
                 <th>Biography</th>
                 <th>Created at</th>
                 <th>Updated at</th>
+                <th>Group</th>
                 <th>Actions</th>
             </tr>
 
@@ -30,6 +33,7 @@
                     <td>{{ people.biography }}</td>
                     <td>{{ people.created_at }}</td>
                     <td>{{ people.updated_at }}</td>
+                    <td>{{ people.group }}</td>
                     <td><a href="/edit/{{ people.id }}">Edit</a>
                     <a href="/delete/{{ people.id }}">Delete</a>
                     </td>
