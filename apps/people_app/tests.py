@@ -55,7 +55,6 @@ class PeopleMethodTest(TestCase):
         self.assertNotIn(to_update, people)
 
 
-
     def test_delete(self):
         """
         delete can deleting data by id
