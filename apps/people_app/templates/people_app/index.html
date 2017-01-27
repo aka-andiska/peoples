@@ -18,7 +18,8 @@
         </select>
         <input type="submit" value="Create" />
     </form>
-    <table border="1">
+
+        <table border="1">
         <thead>
             <tr>
                 <th>Name</th>
@@ -29,8 +30,8 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            {% for people in peoples %}
+            <tbody>
+                {% for people in peoples %}
                 <tr>
                     <td>{{ people.name }}</td>
                     <td>{{ people.biography }}</td>
@@ -43,6 +44,7 @@
                 </tr>
             {% endfor %}
         </tbody>
+        </table>
 
         <table border="1">
             <div>
@@ -63,7 +65,25 @@
             {% endfor %}
             </tbody>
         </table>
-        </div>
-    </table>
+
+        <table border="1">
+            <div>
+                <h1><a href="">Group_2</a></h1>
+            </div>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for people_in_group_2 in group_2 %}
+                <tr>
+                    <td>{{ people_in_group_2.name }}</td>
+                    <td>{{ people_in_group_2.created_at }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 </body>
 </html>
