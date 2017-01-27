@@ -28,7 +28,6 @@
                 <th>Group</th>
                 <th>Actions</th>
             </tr>
-
         </thead>
         <tbody>
             {% for people in peoples %}
@@ -43,11 +42,22 @@
                     </td>
                 </tr>
             {% endfor %}
-
-            {% for people_in_group_1 in group_1 %}
-                {{ people_in_group_1.name }}
-            {% endfor %}
         </tbody>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for people_in_group_1 in group_1 %}
+                <tr>
+                    <td>{{ people_in_group_1.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </table>
 </body>
 </html>
