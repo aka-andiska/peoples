@@ -1,15 +1,19 @@
 from django.shortcuts import render, redirect
-from .models import People
+from .models import People, Group
 
 
 def index(request):
     peoples = People.objects.all()
-    context = {'peoples': peoples}
+    groups = Group.objects.all()
+    group_1 = People.objects.filter(group=1)
+    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1}
+
     return render(request, 'people_app/index.html', context)
 
 def create(request):
     print(request.POST)
-    people_app = People(name=request.POST['name'], biography=request.POST['biography'])
+    group_instance = Group.objects.get(pk=request.POST['group'])
+    people_app = People(name=request.POST['name'], biography=request.POST['biography'], group=group_instance)
     people_app.save()
     return redirect('/')
 
@@ -29,3 +33,4 @@ def destroy(request, id):
     people = People.objects.get(id=id)
     people.delete()
     return redirect('/')
+

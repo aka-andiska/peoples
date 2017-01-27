@@ -10,10 +10,11 @@
         {% csrf_token %}
         <p><label for="name">Name: <input type="text" name="name" id="name" /></label></p>
         <p><label for="biography">Biography: <input type="text" name="biography" id="biography" /></label></p>
-        <select>
+        <select name="group">
             <option value="" disabled="disabled" selected="selected">Please select a group</option>
-            <option value="1">Group_1</option>
-            <option value="2">Group_2</option>
+            {% for group in groups %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}
         </select>
         <input type="submit" value="Create" />
     </form>
@@ -36,11 +37,15 @@
                     <td>{{ people.biography }}</td>
                     <td>{{ people.created_at }}</td>
                     <td>{{ people.updated_at }}</td>
-                    <td>{{ people.group }}</td>
+                    <td><a href="">{{ people.id }}</a></td>
                     <td><a href="/edit/{{ people.id }}">Edit</a>
                     <a href="/delete/{{ people.id }}">Delete</a>
                     </td>
                 </tr>
+            {% endfor %}
+
+            {% for people_in_group_1 in group_1 %}
+                {{ people_in_group_1.name }}
             {% endfor %}
         </tbody>
     </table>
