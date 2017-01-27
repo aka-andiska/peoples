@@ -36,7 +36,7 @@
                     <td>{{ people.biography }}</td>
                     <td>{{ people.created_at }}</td>
                     <td>{{ people.updated_at }}</td>
-                    <td><a href="">{{ people.id }}</a></td>
+                    <td><a href="/group/{{ people.group.id }}">{{ people.group.id }}</a></td>
                     <td><a href="/edit/{{ people.id }}">Edit</a>
                     <a href="/delete/{{ people.id }}">Delete</a>
                     </td>
@@ -45,19 +45,25 @@
         </tbody>
 
         <table border="1">
+            <div>
+                <h1><a href="">Group_1</a></h1>
+            </div>
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Created at</th>
                 </tr>
             </thead>
             <tbody>
             {% for people_in_group_1 in group_1 %}
                 <tr>
                     <td>{{ people_in_group_1.name }}</td>
+                    <td>{{ people_in_group_1.created_at }}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+        </div>
     </table>
 </body>
 </html>
