@@ -35,3 +35,9 @@ def destroy(request, id):
     people.delete()
     return redirect('/')
 
+def group_1(request, id):
+    groups = Group.objects.all()
+    group_1 = People.objects.filter(group=1)
+    context = {'groups': groups, 'group_1': group_1}
+
+    return render(request, 'people_app/group_1.html', context)
