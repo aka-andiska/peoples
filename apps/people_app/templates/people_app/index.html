@@ -45,45 +45,5 @@
             {% endfor %}
         </tbody>
         </table>
-
-        <table border="1">
-            <div>
-                <h1><a href="">Group_1</a></h1>
-            </div>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Created at</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for people_in_group_1 in group_1 %}
-                <tr>
-                    <td>{{ people_in_group_1.name }}</td>
-                    <td>{{ people_in_group_1.created_at }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <table border="1">
-            <div>
-                <h1><a href="">Group_2</a></h1>
-            </div>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Created at</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for people_in_group_2 in group_2 %}
-                <tr>
-                    <td>{{ people_in_group_2.name }}</td>
-                    <td>{{ people_in_group_2.created_at }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
 </body>
 </html>

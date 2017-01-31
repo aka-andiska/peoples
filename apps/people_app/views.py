@@ -20,7 +20,11 @@ def create(request):
 
 def edit(request, id):
     people = People.objects.get(id=id)
-    context = {'people': people}
+    groups = Group.objects.all()
+    group_1 = People.objects.filter(group=1)
+    group_2 = People.objects.filter(group=2)
+    context = {'people': people, 'groups': groups, 'group_1': group_1, 'group_2': group_2}
+
     return render(request, 'people_app/edit.html', context)
 
 def update(request, id):
@@ -35,14 +39,8 @@ def destroy(request, id):
     people.delete()
     return redirect('/')
 
-def group_1(request, id):
-    groups = Group.objects.all()
-    group_1 = People.objects.filter(group=1)
-    context = {'groups': groups, 'group_1': group_1}
-    return render(request, 'people_app/group_1.html', context)
-
-def group_2(request, id):
-    groups = Group.objects.all()
-    group_2 = People.objects.filter(group=2)
-    context = {'groups': groups, 'group_2': group_2}
-    return render(request, 'people_app/group_2.html', context)
+def group(request, id):
+    group = Group.objects.get(pk=id)
+    group_1 = People.objects.filter(group=id)
+    context = {'group': group, 'group_1': group_1}
+    return render(request, 'people_app/group.html', context)

@@ -14,6 +14,12 @@
         <label for="biography">Biography: <input type="text" name="biography"
         value="{{ people.biography }}" placeholder="{{ people.byography }}" />
         </label>
+        <select name="group">
+            <option value="" disabled="disabled" selected="selected">Please select a group</option>
+            {% for group in groups %}
+                <option value="{{ group.id }}" placeholder="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}
+        </select>
         <input type="submit" Value="Update" />
     </form>
 </body>
