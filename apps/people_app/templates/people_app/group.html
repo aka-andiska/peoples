@@ -11,20 +11,26 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Biography</th>
                     <th>Created at</th>
+                    <th>Updated at</th>
                 </tr>
             </thead>
             <tbody>
             {% for people_in_group_1 in group_1 %}
                 <tr>
                     <td>{{ people_in_group_1.name }}</td>
+                    <td>{{ people_in_group_1.biography }}</td>
                     <td>{{ people_in_group_1.created_at }}</td>
+                    <td>{{ people_in_group_1.updated_at }}</td>
                 </tr>
             {% endfor %}
             {% for people_in_group_2 in group_2 %}
                 <tr>
                     <td>{{ people_in_group_2.name }}</td>
+                    <td>{{ people_in_group_2.biography }}</td>
                     <td>{{ people_in_group_2.created_at }}</td>
+                    <td>{{ people_in_group_2.updated_at }}</td>
                 </tr>
             {% endfor %}
             </tbody>

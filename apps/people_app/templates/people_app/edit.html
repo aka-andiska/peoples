@@ -8,16 +8,18 @@
     </div>
     <form action="/update/{{ people.id }}" method="post">
         {% csrf_token %}
-        <label for="name">Name: <input type="text" name="name" id="name"
+        <p><label for="name">Name: <input type="text" name="name" id="name"
         value="{{ people.name }}" placeholder="{{ people.name }}" />
-        </label>
-        <label for="biography">Biography: <input type="text" name="biography"
-        value="{{ people.biography }}" placeholder="{{ people.byography }}" />
-        </label>
-        <select name="group">
-            <option value="" disabled="disabled" selected="selected">Please select a group</option>
+        </label></p>
+
+        <p><label for="biography">Biography: <input type="text" name="biography"
+        value="{{ people.biography }}" placeholder="{{ people.biography }}" />
+        </label></p>
+
+        <select group="people.group.name", name="selected_group">
+            <option value="" selected="{{ people.group.id }}">{{ people.group.name }}</option>
             {% for group in groups %}
-                <option value="{{ group.id }}" placeholder="{{ group.id }}">{{ group.name }}</option>
+                <option value="{{ group.id }}">{{ group.name }}</option>
             {% endfor %}
         </select>
         <input type="submit" Value="Update" />
