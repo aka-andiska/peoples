@@ -40,3 +40,9 @@ def group_1(request, id):
     group_1 = People.objects.filter(group=1)
     context = {'groups': groups, 'group_1': group_1}
     return render(request, 'people_app/group_1.html', context)
+
+def group_2(request, id):
+    groups = Group.objects.all()
+    group_2 = People.objects.filter(group=2)
+    context = {'groups': groups, 'group_2': group_2}
+    return render(request, 'people_app/group_2.html', context)
