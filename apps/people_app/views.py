@@ -29,7 +29,7 @@ def edit(request, id):
 
 def update(request, id):
     people = People.objects.get(id=id)
-    group_id = request.POST['selected_group']
+    group_id = request.POST['group']
     if group_id is "":
         group_id = people.group.id
     group_instance = Group.objects.get(id=group_id)

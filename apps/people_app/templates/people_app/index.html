@@ -8,9 +8,9 @@
     </div>
     <form action="/create" method="post">
         {% csrf_token %}
-        <p><label for="name">Name: <input type="text" name="name" id="name" /></label></p>
-        <p><label for="biography">Biography: <input type="text" name="biography" id="biography" /></label></p>
-        <select name="group">
+        <p><label for="name">Name: <input type="text" name="name" id="name" required/></label></p>
+        <p><label for="biography">Biography: <input type="text" name="biography" id="biography" required/></label></p>
+        <select name="group" >
             <option value="" disabled="disabled" selected="selected">Please select a group</option>
             {% for group in groups %}
                 <option value="{{ group.id }}">{{ group.name }}</option>

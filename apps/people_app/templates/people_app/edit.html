@@ -16,7 +16,7 @@
         value="{{ people.biography }}" placeholder="{{ people.biography }}" />
         </label></p>
 
-        <select group="people.group.name", name="selected_group">
+        <select name="group">
             <option value="" selected="{{ people.group.id }}">{{ people.group.name }}</option>
             {% for group in groups %}
                 <option value="{{ group.id }}">{{ group.name }}</option>
