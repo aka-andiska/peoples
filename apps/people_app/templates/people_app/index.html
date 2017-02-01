@@ -10,7 +10,7 @@
         {% csrf_token %}
         <p><label for="name">Name: <input type="text" name="name" id="name" required/></label></p>
         <p><label for="biography">Biography: <input type="text" name="biography" id="biography" required/></label></p>
-        <select name="group" >
+        <select name="group" required>
             <option value="" disabled="disabled" selected="selected">Please select a group</option>
             {% for group in groups %}
                 <option value="{{ group.id }}">{{ group.name }}</option>
