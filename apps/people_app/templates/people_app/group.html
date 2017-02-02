@@ -14,6 +14,7 @@
                     <th>Biography</th>
                     <th>Created at</th>
                     <th>Updated at</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,16 +24,22 @@
                     <td>{{ people_in_group_1.biography }}</td>
                     <td>{{ people_in_group_1.created_at }}</td>
                     <td>{{ people_in_group_1.updated_at }}</td>
+                    <td><a href="/edit/{{ people_in_group_1.id }}">Edit</a>
+                    <a href="/delete/{{ people_in_group_1.id }}">Delete</a>
+                    </td>
                 </tr>
             {% endfor %}
-            {% for people_in_group_2 in group_2 %}
-                <tr>
-                    <td>{{ people_in_group_2.name }}</td>
-                    <td>{{ people_in_group_2.biography }}</td>
-                    <td>{{ people_in_group_2.created_at }}</td>
-                    <td>{{ people_in_group_2.updated_at }}</td>
-                </tr>
-            {% endfor %}
+            <!--{% for people_in_group_2 in group_2 %}-->
+                <!--<tr>-->
+                    <!--<td>{{ people_in_group_2.name }}</td>-->
+                    <!--<td>{{ people_in_group_2.biography }}</td>-->
+                    <!--<td>{{ people_in_group_2.created_at }}</td>-->
+                    <!--<td>{{ people_in_group_2.updated_at }}</td>-->
+                    <!--<td><a href="/edit/{{ people.id }}">Edit</a>-->
+                    <!--<a href="/delete/{{ people.id }}">Delete</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--{% endfor %}-->
             </tbody>
         </form>
     </table>

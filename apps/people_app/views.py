@@ -50,9 +50,11 @@ def group(request, id):
     context = {'group': group, 'group_1': group_1}
     return render(request, 'people_app/group.html', context)
 
-#def back(request):
- #   peoples = People.objects.all()
-  #  groups = Group.objects.all()
-   # context = {'peoples': peoples, 'groups': groups}
 
-    #return redirect(request, 'people_app/index.html', context)
+
+# def back(request):
+#     peoples = People.objects.all()
+#     groups = Group.objects.all()
+#     context = {'peoples': peoples, 'groups': groups}
+#
+#     return redirect(request, 'people_app/index.html', context)

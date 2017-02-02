@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import People
+from .models import People, Group
 
 from django.core.urlresolvers import reverse
 
@@ -29,6 +29,7 @@ class PeopleMethodTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['peoples']),2)
+
 
     def test_edit(self):
         """
@@ -62,6 +63,19 @@ class PeopleMethodTest(TestCase):
         to_delete = People.objects.filter(id=2)
         peoples = People.objects.all()
         self.assertNotIn(to_delete, peoples)
+
+    # def test_group_1(self):
+    #     """
+    #     table group_1 can select data people by group id from table people
+    #     """
+    #     group = Group.objects.all()
+    #     peoples = People.objects.all()
+    #     people_in_group_1 = People.objects.filter(group_id=1)
+    #
+    #
+    #     response = self.client.post(reverse('group.html'))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertNotIn(peoples, group, people_in_group_1)
 
 
 
