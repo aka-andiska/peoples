@@ -3,11 +3,25 @@
     <title>Peoples</title>
 </head>
 <body>
+    <div>
+        <h1><a href="">{{ group.name }}</a></h1>
+    </div>
+
+    <form action="/create" method="post">
+        {% csrf_token %}
+        <p><label for="name">Name: <input type="text" name="name" id="name" required/></label></p>
+        <p><label for="biography">Biography: <input type="text" name="biography" id="biography" required/></label></p>
+        <!--<select name="group" >-->
+            <!--{% for group_1 in group_1 %}-->
+                <!--<option value="{{ people.group.id }}">{{ group.id }}</option>-->
+            <!--{% endfor %}-->
+        <!--</select>-->
+        <label for="name">Group: <input name="group" value="{{ group.id }}"></label>
+        <p><input type="submit" value="Create" required/></p>
+    </form>
+
     <table border="1">
-        <div>
-            <h1><a href="">{{ group.name }}</a></h1>
-        </div>
-        <form action="/group/{{ people.group.id }}" method="get">
+        <form action="/group/{{ people_in_group_1.id }}" method="get">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -29,17 +43,6 @@
                     </td>
                 </tr>
             {% endfor %}
-            <!--{% for people_in_group_2 in group_2 %}-->
-                <!--<tr>-->
-                    <!--<td>{{ people_in_group_2.name }}</td>-->
-                    <!--<td>{{ people_in_group_2.biography }}</td>-->
-                    <!--<td>{{ people_in_group_2.created_at }}</td>-->
-                    <!--<td>{{ people_in_group_2.updated_at }}</td>-->
-                    <!--<td><a href="/edit/{{ people.id }}">Edit</a>-->
-                    <!--<a href="/delete/{{ people.id }}">Delete</a>-->
-                    <!--</td>-->
-                <!--</tr>-->
-            <!--{% endfor %}-->
             </tbody>
         </form>
     </table>

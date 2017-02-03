@@ -23,12 +23,12 @@ class PeopleMethodTest(TestCase):
         """
         crete should can creating new data and post in index
         """
-        lion = People.objects.create(name="lion", biography="roar")
         cat = People.objects.create(name="cat", biography="meow")
+
         response = self.client.post(reverse('index'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.context['peoples']),2)
+        self.assertEqual(response.context['peoples'][0], cat)
 
 
     def test_edit(self):
@@ -36,11 +36,11 @@ class PeopleMethodTest(TestCase):
         edit can be editing data and get by id
         """
         peoples = People.objects.all()
-        to_edit = People.objects.filter(id=1)
+        edit_lion = People.objects.filter(id=1)
 
         response = self.client.post(reverse('index'))
         self.assertEqual(response.status_code, 200)
-        self.assertNotIn(to_edit, peoples)
+        self.assertNotIn(edit_lion, peoples)
 
 
     def test_update(self):
@@ -64,18 +64,21 @@ class PeopleMethodTest(TestCase):
         peoples = People.objects.all()
         self.assertNotIn(to_delete, peoples)
 
-    # def test_group_1(self):
-    #     """
-    #     table group_1 can select data people by group id from table people
-    #     """
-    #     group = Group.objects.all()
-    #     peoples = People.objects.all()
-    #     people_in_group_1 = People.objects.filter(group_id=1)
-    #
-    #
-    #     response = self.client.post(reverse('group.html'))
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertNotIn(peoples, group, people_in_group_1)
+    def test_group(self):
+        """
+        group can select data people by group id from table people
+        """
+        people_in_group_1 = People.objects.filter(group_id=1)
+        people_in_group_2 = People.objects.filter(group_id=2)
+
+        self.assertNotIn(people_in_group_1, people_in_group_2)
+
+    def test_create_in_group(self):
+        """
+        group can create new data
+        """
+        
+
 
 
 

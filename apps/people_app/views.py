@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import People, Group
 
 
-
 def index(request):
     peoples = People.objects.all()
     groups = Group.objects.all()
@@ -50,6 +49,8 @@ def group(request, id):
     context = {'group': group, 'group_1': group_1}
     return render(request, 'people_app/group.html', context)
 
+# def group_create(request):
+#
 
 
 # def back(request):
