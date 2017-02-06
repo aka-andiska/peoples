@@ -51,7 +51,14 @@ def group(request, id):
     return render(request, 'people_app/group.html', context)
 
 def group_list(request):
-    return render(request, 'people_app/group_list.html')
+    peoples = People.objects.all()
+    groups = Group.objects.all()
+    group_all = Group_List.objects.all()
+    group_1 = People.objects.filter(group=1)
+    group_2 = People.objects.filter(group=2)
+    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_all' : group_all}
+
+    return render(request, 'people_app/group_list.html', context)
 
 
 # defback(request):
