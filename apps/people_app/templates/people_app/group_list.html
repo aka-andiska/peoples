@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Peoples</title>
+</head>
+<body>
+    <div>
+        <h1><a href="">Data List</a></h1>
+    </div>
+
+    <form action="/create" method="post">
+        {% csrf_token %}
+        <p><label for="name">Name: <input type="text" name="name" id="name" required/></label></p>
+        <p><label for="information">Information: <input type="text" name="information" id="information" required/></label></p>
+        <p><input type="submit" value="Create" required/></p>
+    </form>
+
+    <table border="1">
+        <form action="/group/{{ people_in_group_1.id }}" method="get">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Information</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for people_in_group_1 in group_1 %}
+                <!--<tr>-->
+                    <!--<td>{{ people_in_group_1.name }}</td>-->
+                    <!--<td>{{ people_in_group_1.Information }}</td>-->
+                    <!--<td><a href="/add/{{ people_in_group_1.id }}">Add_Group</a>-->
+                    <!--<td><a href="/edit/{{ people_in_group_1.id }}">Edit</a>-->
+                    <!--<a href="/delete/{{ people_in_group_1.id }}">Delete</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+            {% endfor %}
+            </tbody>
+        </form>
+    </table>
+</body>
+</html>

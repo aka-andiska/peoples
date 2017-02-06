@@ -73,11 +73,42 @@ class PeopleMethodTest(TestCase):
 
         self.assertNotIn(people_in_group_1, people_in_group_2)
 
-    def test_create_in_group(self):
+    def test_create_in_group(self, group_instance=None):
         """
         group can create new data
         """
-        
+        lion = Group.objects.create(name="lion", biography="roar")
+        lion1 = Group.objects.create(name="lion", biography="roar")
+
+        response = self.client.post(reverse('group')) #this is how to act
+
+        self.assertEqual(response.status_code, 200) #this is how to assert
+        self.assertEqual(len(response.context['peoples']),2)
+        self.assertEqual(response.context['peoples'][0], lion)
+        self.assertEqual(response.context['peoples'][1], lion1)
+
+    def test_group_edit(self):
+        """
+        group can get data by id to editing
+        """
+        pass
+
+    def test_group_update(self):
+        """
+        group can update data
+        """
+        pass
+
+    def test_group_delet(self):
+        """
+        group can delete data by id
+        """
+        people = Group.objects.all()
+        to_delete = Group.objects.filter(id=89)
+
+        self.assertNotIn(people, to_delete)
+
+
 
 
 

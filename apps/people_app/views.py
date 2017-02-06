@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
-from .models import People, Group
+from .models import People, Group, Group_List
 
 
 def index(request):
     peoples = People.objects.all()
     groups = Group.objects.all()
+    group_all = Group_List.objects.all()
     group_1 = People.objects.filter(group=1)
     group_2 = People.objects.filter(group=2)
-    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2}
+    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_all' : group_all}
 
     return render(request, 'people_app/index.html', context)
 
@@ -44,16 +45,16 @@ def destroy(request, id):
     return redirect('/')
 
 def group(request, id):
-    group = Group.objects.get(pk=id)
+    group = Group_List.objects.get(pk=id)
     group_1 = People.objects.filter(group=id)
     context = {'group': group, 'group_1': group_1}
     return render(request, 'people_app/group.html', context)
 
-# def group_create(request):
-#
+def group_list(request):
+    return render(request, 'people_app/group_list.html')
 
 
-# def back(request):
+# defback(request):
 #     peoples = People.objects.all()
 #     groups = Group.objects.all()
 #     context = {'peoples': peoples, 'groups': groups}
