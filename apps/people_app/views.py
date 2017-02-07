@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect
-from .models import People, Group, Group_List
+from .models import People, Group
 
 
 def index(request):
     peoples = People.objects.all()
     groups = Group.objects.all()
-    group_all = Group_List.objects.all()
     group_1 = People.objects.filter(group=1)
     group_2 = People.objects.filter(group=2)
-    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_all' : group_all}
+    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2}
 
     return render(request, 'people_app/index.html', context)
 
@@ -45,20 +44,18 @@ def destroy(request, id):
     return redirect('/')
 
 def group(request, id):
-    group = Group_List.objects.get(pk=id)
+    group = Group.objects.get(pk=id)
     group_1 = People.objects.filter(group=id)
     context = {'group': group, 'group_1': group_1}
     return render(request, 'people_app/group.html', context)
 
-def group_list(request):
-    peoples = People.objects.all()
+def groups(request):
     groups = Group.objects.all()
-    group_all = Group_List.objects.all()
-    group_1 = People.objects.filter(group=1)
-    group_2 = People.objects.filter(group=2)
-    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_all' : group_all}
+    # group = Group.objects.filter(group=id)
+    # context = {'group': group, 'groups': groups}
+    context = {'groups': groups}
 
-    return render(request, 'people_app/group_list.html', context)
+    return render(request, 'people_app/groupall.html', context)
 
 
 # defback(request):

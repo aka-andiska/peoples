@@ -1,14 +1,14 @@
 from django.db import models
 
 
+# class Groups(models.Model):
+#     name = models.CharField(max_length=255)
+#     information = models.TextField()
+
+
 class Group(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
-
-
-class Group_List(models.Model):
-    name = models.CharField(max_length=255)
-    information = models.TextField()
 
 
 class People(models.Model):
