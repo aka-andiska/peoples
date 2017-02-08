@@ -7,7 +7,8 @@ def index(request):
     groups = Group.objects.all()
     group_1 = People.objects.filter(group=1)
     group_2 = People.objects.filter(group=2)
-    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2}
+    group_3 = People.objects.filter(group=3)
+    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_3': group_3}
 
     return render(request, 'people_app/index.html', context)
 
@@ -22,7 +23,8 @@ def edit(request, id):
     groups = Group.objects.all()
     group_1 = People.objects.filter(group=1)
     group_2 = People.objects.filter(group=2)
-    context = {'people': people, 'groups': groups, 'group_1': group_1, 'group_2': group_2}
+    group_3 = People.objects.filter(group=3)
+    context = {'people': people, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_3': group_3}
 
     return render(request, 'people_app/edit.html', context)
 
@@ -43,20 +45,24 @@ def destroy(request, id):
     people.delete()
     return redirect('/')
 
+
+
 def group(request, id):
     group = Group.objects.get(pk=id)
     group_1 = People.objects.filter(group=id)
     context = {'group': group, 'group_1': group_1}
     return render(request, 'people_app/group.html', context)
 
-def groups(request):
-    groups = Group.objects.all()
-    # group = Group.objects.filter(group=id)
-    # context = {'group': group, 'groups': groups}
-    context = {'groups': groups}
-
+def group_list(request):
+    group_list = Group.objects.all()
+    context = {'group_list': group_list}
     return render(request, 'people_app/groupall.html', context)
 
+# def create_group(request):
+#     group_instance = Group.objects.get(pk=request.POST['group'])
+#     people_app = Group(name=request.POST['name'], information=request.POST['information'], group=group_instance)
+#     people_app.save()
+#     return redirect('/')
 
 # defback(request):
 #     peoples = People.objects.all()
