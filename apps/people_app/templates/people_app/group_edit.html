@@ -1,0 +1,22 @@
+<html>
+<head>
+        <title>Peoples</title>
+</head>
+<body>
+    <div>
+        <h1><a href="">Edit Group</a></h1>
+    </div>
+    <form action="/update/{{ group_list.id }}" method="post">
+        {% csrf_token %}
+        <p><label for="name">Name: <input type="text" name="name" id="name"
+        value="{{ group_list.name }}" placeholder="{{ group_list.name }}" />
+        </label></p>
+
+        <p><label for="information">Information: <input type="text" name="biography"
+        value="{{ group_list.information }}" placeholder="{{ group_list.information }}" />
+        </label></p>
+
+        <input type="submit" Value="Update" />
+    </form>
+</body>
+</html>

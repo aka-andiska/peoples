@@ -23,7 +23,7 @@ def edit(request, id):
     return render(request, 'people_app/edit.html', context)
 
 def update(request, id):
-    people = People.objects.get(id=id)
+    people = People.objects.get(pk=id)
     group_id = request.POST['group']
     if group_id is "":
         group_id = people.group.id
@@ -50,22 +50,22 @@ def group(request, id):
 def group_list(request):
     group_list = Group.objects.all()
     context = {'group_list': group_list}
-    return render(request, 'people_app/groupall.html', context)
-
-# def group_create(request):
-#     group_instance = Group.objects.get(pk=request.POST['group_list'])
-#     people_app = Group(name=request.POST['name'], group=group_instance)
-#     people_app.save()
-#     return redirect(request, 'people_app/groupall.html')
-
-def group_edit(request):
-    pass
+    return render(request, 'people_app/group_list.html', context)
 
 def group_create(request):
-
     new_group = Group(name=request.POST.get('group_name'), information=request.POST.get('information', None)) # create a new Group object with the name = request.POST.get('group_name')
     new_group.save()
 
+    return redirect('/group_list')
+
+def group_edit(request):
+    group_name = Group.objects.get(pk=id)
+    context = {'group_name': group_name}
+    return render(request, 'people_app/group_edit.html', context)
+
+def group_destroy(request, id):
+    group_name = Group.objects.get(pk=id)
+    group_name.delete()
     return redirect('/group_list')
 
 # defback(request):
