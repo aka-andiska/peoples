@@ -16,7 +16,7 @@ def create(request):
     return redirect('/')
 
 def edit(request, id):
-    people = People.objects.get(id=id)
+    people = People.objects.get(pk=id)
     groups = Group.objects.all()
     context = {'people': people, 'groups': groups}
 
@@ -58,9 +58,9 @@ def group_create(request):
 
     return redirect('/group_list')
 
-def group_edit(request):
-    group_name = Group.objects.get(pk=id)
-    context = {'group_name': group_name}
+def group_edit(request, id):
+    group = Group.objects.get(pk=id)
+    context = {'group': group}
     return render(request, 'people_app/group_edit.html', context)
 
 def group_destroy(request, id):
