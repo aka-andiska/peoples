@@ -5,10 +5,7 @@ from .models import People, Group
 def index(request):
     peoples = People.objects.all()
     groups = Group.objects.all()
-    group_1 = People.objects.filter(group=1)
-    group_2 = People.objects.filter(group=2)
-    group_3 = People.objects.filter(group=3)
-    context = {'peoples': peoples, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_3': group_3}
+    context = {'peoples': peoples, 'groups': groups}
 
     return render(request, 'people_app/index.html', context)
 
@@ -21,10 +18,7 @@ def create(request):
 def edit(request, id):
     people = People.objects.get(id=id)
     groups = Group.objects.all()
-    group_1 = People.objects.filter(group=1)
-    group_2 = People.objects.filter(group=2)
-    group_3 = People.objects.filter(group=3)
-    context = {'people': people, 'groups': groups, 'group_1': group_1, 'group_2': group_2, 'group_3': group_3}
+    context = {'people': people, 'groups': groups}
 
     return render(request, 'people_app/edit.html', context)
 
@@ -58,11 +52,21 @@ def group_list(request):
     context = {'group_list': group_list}
     return render(request, 'people_app/groupall.html', context)
 
-# def create_group(request):
-#     group_instance = Group.objects.get(pk=request.POST['group'])
-#     people_app = Group(name=request.POST['name'], information=request.POST['information'], group=group_instance)
+# def group_create(request):
+#     group_instance = Group.objects.get(pk=request.POST['group_list'])
+#     people_app = Group(name=request.POST['name'], group=group_instance)
 #     people_app.save()
-#     return redirect('/')
+#     return redirect(request, 'people_app/groupall.html')
+
+def group_edit(request):
+    pass
+
+def group_create(request):
+
+    new_group = Group(name=request.POST.get('group_name'), information=request.POST.get('information', None)) # create a new Group object with the name = request.POST.get('group_name')
+    new_group.save()
+
+    return redirect('/group_list')
 
 # defback(request):
 #     peoples = People.objects.all()

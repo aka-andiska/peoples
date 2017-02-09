@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^delete/(?P<id>\d+)$', views.destroy, name='delete'),
     url(r'^group/(?P<id>\d+)$', views.group, name='group'),
     url(r'^group_list$', views.group_list, name='group_list'),
+    url(r'^group_create$', views.group_create, name='group_create'),
 
     # url(r'^back/(?P<id>\d+)$', views.back, name='back'),
 

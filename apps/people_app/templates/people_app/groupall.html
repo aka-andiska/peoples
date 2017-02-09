@@ -7,11 +7,11 @@
         <h1><a href="">Group List</a></h1>
     </div>
 
-    <form action="/create_group" method="post">
+    <form action="/group_create" method="post">
         {% csrf_token %}
-        <p><label for="name">Name: <input type="text" name="name" id="name" required/></label></p>
-        <!--<p><label for="information">Information: <input type="text" name="information" id="information" required/></label></p>-->
-        <input type="submit" value="Create Group" required/>
+        <p><label for="group_name">Name: <input type="text" name="group_name" id="group_name" required/></label></p>
+        <p><label for="information">Information: <input type="text" name="information" id="information"/></label></p>
+        <input type="submit" value="Create Group" />
     </form>
 
     <table border="1">
@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Information</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -26,8 +27,9 @@
             {% for group_in_group_list in group_list %}
                 <tr>
                     <!--<td>{{ group_in_group_list.name }}</td>-->
-                    <td><a href="/group/{{ group_in_group_list.name }}">{{ group_in_group_list.name }}</a></td>
-                    <td><a href="/edit/{{ group_in_group_list.id }}">Edit</a>
+                    <td><a href="/group/{{ group_in_group_list.id }}">{{ group_in_group_list.name }}</a></td>
+                    <td>{{ group_in_group_list.information }}</td>
+                    <td><a href="/edit/{{ group_in_group_list. }}">Edit</a>
                     <a href="/delete/{{ group_in_group_list.id }}">Delete</a>
                     </td>
                 </tr>
