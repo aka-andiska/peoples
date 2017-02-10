@@ -6,13 +6,13 @@
     <div>
         <h1><a href="">Edit Group</a></h1>
     </div>
-    <form action="/update/{{ group.id }}" method="post">
+    <form action="/group_update/{{ group.id }}" method="post">
         {% csrf_token %}
         <p><label for="name">Name: <input type="text" name="name" id="name"
         value="{{ group.name }}" placeholder="{{ group.name }}" />
         </label></p>
 
-        <p><label for="information">Information: <input type="text" name="biography"
+        <p><label for="information">Information: <input type="text" name="information"
         value="{{ group.information }}" placeholder="{{ group.information }}" />
         </label></p>
 

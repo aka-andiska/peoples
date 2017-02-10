@@ -55,13 +55,19 @@ def group_list(request):
 def group_create(request):
     new_group = Group(name=request.POST.get('group_name'), information=request.POST.get('information', None)) # create a new Group object with the name = request.POST.get('group_name')
     new_group.save()
-
     return redirect('/group_list')
 
 def group_edit(request, id):
     group = Group.objects.get(pk=id)
     context = {'group': group}
     return render(request, 'people_app/group_edit.html', context)
+
+def group_update(request, id):
+    group = Group.objects.get(pk=id)
+    group.name = request.POST['name']
+    group.information = request.POST['information']
+    group.save()
+    return redirect('/group_list')
 
 def group_destroy(request, id):
     group_name = Group.objects.get(pk=id)
