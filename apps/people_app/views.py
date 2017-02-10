@@ -13,7 +13,7 @@ def create(request):
     group_instance = Group.objects.get(pk=request.POST['group'])
     people_app = People(name=request.POST['name'], biography=request.POST['biography'], group=group_instance)
     people_app.save()
-    return redirect('/')
+    return redirect('/group/' + str(group_instance.id))
 
 def edit(request, id):
     people = People.objects.get(pk=id)
@@ -74,9 +74,3 @@ def group_destroy(request, id):
     group_name.delete()
     return redirect('/group_list')
 
-# defback(request):
-#     peoples = People.objects.all()
-#     groups = Group.objects.all()
-#     context = {'peoples': peoples, 'groups': groups}
-#
-#     return redirect(request, 'people_app/index.html', context)
