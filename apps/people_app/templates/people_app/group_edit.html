@@ -3,9 +3,9 @@
         <title>Peoples</title>
 </head>
 <body>
-    <div>
-        <h1><a href="">Edit Group</a></h1>
-    </div>
+
+        <h1>Edit Group</h1>
+    <hr>
     <form action="/group_update/{{ group.id }}" method="post">
         {% csrf_token %}
         <p><label for="name">Name: <input type="text" name="name" id="name"
@@ -17,6 +17,7 @@
         </label></p>
 
         <input type="submit" Value="Update" />
+        <input type="button" onclick="location.href='/group_list';" value="Cancel" />
     </form>
 </body>
 </html>

@@ -3,9 +3,9 @@
         <title>Peoples</title>
 </head>
 <body>
-    <div>
-        <h1><a href="">Edit Data</a></h1>
-    </div>
+
+        <h1>Edit Data</h1>
+    <hr>
     <form action="/update/{{ people.id }}" method="post">
         {% csrf_token %}
         <p><label for="name">Name: <input type="text" name="name" id="name"
@@ -23,6 +23,7 @@
             {% endfor %}
         </select>
         <input type="submit" Value="Update" />
+        <input type="button" onclick="location.href='/';" value="Cancel" />
     </form>
 </body>
 </html>

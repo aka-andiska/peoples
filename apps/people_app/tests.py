@@ -73,19 +73,18 @@ class PeopleMethodTest(TestCase):
 
         self.assertNotIn(people_in_group_1, people_in_group_2)
 
-    def test_create_in_group(self, group_instance=None):
+    def test_create_new_group(self, group_instance=None):
         """
-        group can create new data
+        group can create new group
         """
-        lion = Group.objects.create(name="lion", biography="roar")
-        lion1 = Group.objects.create(name="lion", biography="roar")
+        lion = Group.objects.create(name="lion", information="roar")
 
-        response = self.client.post(reverse('group')) #this is how to act
+
+        response = self.client.post(reverse('group_list')) #this is how to act
 
         self.assertEqual(response.status_code, 200) #this is how to assert
-        self.assertEqual(len(response.context['peoples']),2)
-        self.assertEqual(response.context['peoples'][0], lion)
-        self.assertEqual(response.context['peoples'][1], lion1)
+        self.assertEqual(response.context['group'], lion)
+
 
     def test_group_edit(self):
         """

@@ -3,9 +3,10 @@
     <title>People</title>
 </head>
 <body>
-    <div>
-        <h1><a href="">Peoples Data</a></h1>
-    </div>
+<div id = "footer" style = "background-color:33cccc; text-align:center;">
+<h1>Data Peoples</h1>
+</div>
+    <hr>
     <form action="/create" method="post">
         {% csrf_token %}
         <p><label for="name">Name: <input type="text" name="name" id="name" required/></label></p>
